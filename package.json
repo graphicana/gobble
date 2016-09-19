@@ -4,11 +4,16 @@
   "dependencies": {
     "grunt": "1.x",
     "grunt-contrib-watch": "1.x",
-    "grunt-contrib-compass": "1.x",
+    "grunt-contrib-sass": "^1",
+    "grunt-contrib-compass": "~1.0",
     "grunt-contrib-uglify": "2.x",
     "matchdep": "1.x",
     "angular": "1.x",
     "jquery": "2.x",
     "bootstrap": "3.x"
+  },
+  "devDependencies": {
+    "grunt-contrib-compass": "^1.0.4",
+    "grunt-contrib-less": "^1.4.0"
   }
 }

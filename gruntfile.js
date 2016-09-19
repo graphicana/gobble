@@ -1,7 +1,9 @@
 module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-compass');
+    /*grunt.loadNpmTasks('grunt-contrib-compass');
+     grunt.loadNpmTasks('grunt-contrib-sass');*/
+    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.initConfig({
         uglify: {
             my_target: {
@@ -10,10 +12,20 @@ module.exports = function (grunt) {
                 }
             }
         }, //uglify
-        compass: {
-            dev: {
+        /*compass: {
+         dev: {
+         options: {
+         config: 'config.rb'
+         }
+         }
+         },*/
+        less: {
+            development: {
                 options: {
-                    config: 'config.rb'
+                    compress: false
+                },
+                files: {
+                    "css/styles.css" : "css/less/bootstrap.less" // destination file and source file
                 }
             }
         },
@@ -23,9 +35,16 @@ module.exports = function (grunt) {
                 files: ['components/js/script.js'],
                 tasks: ['uglify']
             },
-            sass: {
-                files: ['components/sass/*.scss'],
-                tasks: ['compass:dev']
+            /*compass: {
+             files: ['components/sass/!*.scss'],
+             tasks: ['compass:dev']
+             },*/
+            styles: {
+                files: ['css/less/*.less'], // which files to watch
+                tasks: ['less'],
+                options: {
+                    nospawn: false
+                }
             },
             html: {
                 files: ['*.html']
